@@ -7,7 +7,15 @@ workflows:
     scripts:
       - name: Build APK
         script: |
-          curl -L -o gradle/wrapper/gradle-wrapper.jar "https://raw.githubusercontent.com/gradle/gradle/v8.4.0/gradle/wrapper/gradle-wrapper.jar"
+          python3 -c "
+          import urllib.request, json, base64
+          url = 'https://api.github.com/repos/android/sunflower/contents/gradle/wrapper/gradle-wrapper.jar'
+          req = urllib.request.Request(url, headers={'User-Agent': 'curl/7.0'})
+          with urllib.request.urlopen(req) as r:
+              data = json.loads(r.read())
+          with open('gradle/wrapper/gradle-wrapper.jar', 'wb') as f:
+              f.write(base64.b64decode(data['content'].replace('\n', '')))
+          "
           chmod +x gradlew
           ./gradlew assembleDebug
     artifacts:
