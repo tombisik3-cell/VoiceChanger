@@ -4,6 +4,7 @@ plugins {
 
 android {
     compileSdk 34
+    namespace "com.lo.voicechanger"
     defaultConfig {
         applicationId "com.lo.voicechanger"
         minSdk 26
