@@ -7,7 +7,7 @@ workflows:
     scripts:
       - name: Build APK
         script: |
-          curl -L -o gradle/wrapper/gradle-wrapper.jar "https://github.com/google/iosched/raw/main/gradle/wrapper/gradle-wrapper.jar"
+          curl -L -o gradle/wrapper/gradle-wrapper.jar "https://raw.githubusercontent.com/gradle/gradle/v8.4.0/gradle/wrapper/gradle-wrapper.jar"
           chmod +x gradlew
           ./gradlew assembleDebug
     artifacts:
