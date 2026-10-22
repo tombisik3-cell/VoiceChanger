@@ -1,4 +1,5 @@
 workflows:
+  workflows:
   android-workflow:
     name: Android Workflow
     max_build_duration: 60
@@ -7,10 +8,9 @@ workflows:
     scripts:
       - name: Build APK
         script: |
-          wget https://services.gradle.org/distributions/gradle-8.4-bin.zip
-          unzip gradle-8.4-bin.zip
-          chmod +x gradle-8.4/bin/gradle
-          ./gradle-8.4/bin/gradle wrapper
+          sudo apt-get update -y
+          sudo apt-get install -y gradle
+          gradle wrapper --gradle-version 8.4
           chmod +x gradlew
           ./gradlew assembleDebug
     artifacts:
