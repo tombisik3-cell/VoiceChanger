@@ -9,6 +9,7 @@ workflows:
         script: |
           wget https://services.gradle.org/distributions/gradle-8.4-bin.zip
           unzip gradle-8.4-bin.zip
+          chmod +x gradle-8.4/bin/gradle
           ./gradle-8.4/bin/gradle wrapper
           chmod +x gradlew
           ./gradlew assembleDebug
