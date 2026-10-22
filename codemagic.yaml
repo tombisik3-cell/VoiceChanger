@@ -9,7 +9,11 @@ workflows:
         script: |
           sudo apt-get update -y
           sudo apt-get install -y gradle
+          mkdir /tmp/gw && cd /tmp/gw
           gradle wrapper --gradle-version 8.4
+          cp gradlew $CM_BUILD_DIR/
+          cp -r gradle $CM_BUILD_DIR/
+          cd $CM_BUILD_DIR
           chmod +x gradlew
           ./gradlew assembleDebug
     artifacts:
